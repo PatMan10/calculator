@@ -48,7 +48,9 @@ class App extends React.Component<{}, AppState> {
   }
 
   onclickNumber(value: string) {
-    const { equation, input } = this.state;
+    const { equation, input, isSolved } = this.state;
+    if (isSolved) return;
+
     let newEq = [...equation],
       newI = input;
 
@@ -61,7 +63,15 @@ class App extends React.Component<{}, AppState> {
     else newI += value;
 
     if (newEq.length === 0) newEq.push(newI);
-    else if (newEq.length >= 2) {
+    else if (newEq.length === 1) {
+      if (newEq[0] === C.charMinus) {
+        newEq[newEq.length - 1] += value;
+        newI = newEq[newEq.length - 1];
+      } else {
+        newEq[newEq.length - 1] += value;
+        newI = newEq[newEq.length - 1];
+      }
+    } else if (newEq.length >= 2) {
       const str0 = newEq[newEq.length - 2],
         str1 = newEq[newEq.length - 1];
 
@@ -111,7 +121,9 @@ class App extends React.Component<{}, AppState> {
   }
 
   onclickRadix() {
-    const { equation, input } = this.state;
+    const { equation, input, isSolved } = this.state;
+
+    if (isSolved) return;
 
     if (F.isOperation(input) || input.includes(C.charRadix)) return;
 
