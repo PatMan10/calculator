@@ -1,0 +1,39 @@
+body {
+  background-color: lime;
+}
+
+div[id="calculator"] {
+  border-radius: 5px;
+}
+
+div[id="display"] > label {
+  color: white;
+  font-size: 1.6em;
+  min-height: 40px;
+  text-align: right;
+}
+
+div[id="buttons"] {
+  display: grid;
+  grid-gap: 1px;
+  grid-template-columns: 80px 80px 80px 80px;
+  grid-template-rows: 80px 80px 80px 80px 80px;
+}
+
+input[id="equals"] {
+  height: 161px;
+  /*grid-row: 4 / 6;*/
+}
+
+input[type="button"] {
+  font-size: 1.5em;
+}
+
+input[type="button"]:hover {
+  color: cyan;
+}
+
+input[id="clear"],
+input[id="zero"] {
+  grid-column: 1 / 3;
+}
