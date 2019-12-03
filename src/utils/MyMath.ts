@@ -1,8 +1,10 @@
 import C from "./Constants";
 import F from "./Functions";
-import Logger from "./Logger";
+import L from "./Logger";
 
 function solve(equation: Array<string>): number {
+  if (!isValidEquation(equation)) throw new Error("Malformed equation.");
+
   let curEquation: Array<string> = equation;
 
   while (curEquation.length > 1) {
@@ -20,8 +22,13 @@ function solve(equation: Array<string>): number {
   return Number(curEquation[0]);
 }
 
+function isValidEquation(equation: Array<string>): boolean {
+  if (equation.length === 0) return false;
+  if (F.isSymbol(equation[equation.length - 1])) return false;
+  return true;
+}
+
 function findOperationIndex(curEquation: Array<string>): number {
-  Logger.warn(curEquation);
   let index = -1;
   for (let i = 0; i < curEquation.length; i++) {
     const strCurValue = curEquation[i];
@@ -29,7 +36,6 @@ function findOperationIndex(curEquation: Array<string>): number {
 
     if (index === -1) if (F.isMinusOrPlus(strCurValue)) index = i;
   }
-  Logger.warn(index);
   return index;
 }
 
@@ -53,6 +59,7 @@ function executeOperation(
 }
 
 export default {
+  isValidEquation,
   findOperationIndex,
   executeOperation,
   solve
