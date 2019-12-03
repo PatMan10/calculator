@@ -14,7 +14,7 @@ import MyMath from "./utils/MyMath";
 
 interface AppState {
   equation: Array<string>;
-  alreadySolved: boolean;
+  isSolved: boolean;
   input: string;
 }
 
@@ -23,7 +23,7 @@ class App extends React.Component<{}, AppState> {
     super({});
     this.state = {
       equation: [],
-      alreadySolved: false,
+      isSolved: false,
       input: C.charZero
     };
   }
@@ -31,17 +31,17 @@ class App extends React.Component<{}, AppState> {
   onclickClear() {
     this.setState({
       equation: [],
-      alreadySolved: false,
+      isSolved: false,
       input: C.charZero
     });
   }
 
   continueSolvedEquation() {
-    const { alreadySolved: boolS, input: strI } = this.state;
+    const { isSolved: boolS, input: strI } = this.state;
 
     if (!boolS) return {};
 
-    this.setState({ alreadySolved: false });
+    this.setState({ isSolved: false });
     return {
       equation: [strI]
     };
@@ -122,21 +122,17 @@ class App extends React.Component<{}, AppState> {
   }
 
   onclickEquals() {
-    if (this.state.alreadySolved) return;
+    if (this.state.isSolved) return;
 
     let equation = [...this.state.equation],
-      alreadySolved = true,
+      isSolved = true,
       input;
 
-    const numResult = MyMath.solve(equation);
-    input = numResult;
-    equation.push(C.charEquals, numResult + "");
+    const result = MyMath.solve(equation) + "";
+    input = result;
+    equation.push(C.charEquals, result);
 
-    this.setState({
-      equation,
-      alreadySolved,
-      input
-    });
+    this.setState({ equation, isSolved, input });
   }
 
   render() {
