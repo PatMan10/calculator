@@ -1,12 +1,13 @@
-import React from "react";
-//////////////
+//------------CSS-------------
 import "./css/normalise.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/kickstart.css";
 import "./css/animate.css";
 import "./css/mobile.css";
 import "./css/desktop.css";
-/////////////
+//------------LIBS-------------
+import React from "react";
+//------------UTILS-------------
 import C from "./utils/Constants";
 import F from "./utils/Functions";
 import L from "./utils/Logger";
@@ -123,9 +124,7 @@ class App extends React.Component<{}, AppState> {
   onclickRadix() {
     const { equation, input, isSolved } = this.state;
 
-    if (isSolved) return;
-
-    if (F.isOperation(input) || input.includes(C.charRadix)) return;
+    if (isSolved || F.isOperation(input) || input.includes(C.charRadix)) return;
 
     let newEq = [...equation],
       newI = input;
@@ -148,12 +147,12 @@ class App extends React.Component<{}, AppState> {
       input = curI;
 
     try {
-      const result = MyMath.solve(equation) + "";
+      const result = MyMath.solve(equation).toString();
       input = result;
       equation.push(C.charEquals, result);
       this.setState({ equation, isSolved, input });
     } catch (e) {
-      alert("invalid equation");
+      alert("Invalid equation.");
     }
   }
 

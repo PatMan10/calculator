@@ -22,13 +22,28 @@ function solve(equation: Array<string>): number {
   return Number(curEquation[0]);
 }
 
-function isValidEquation(equation: Array<string>): boolean {
+export function isValidEquation(equation: Array<string>): boolean {
   if (equation.length === 0) return false;
+
+  if (equation.length === 1 && F.isNumber(equation[0])) return true;
+
+  if (F.isSymbol(equation[0])) return false;
+
   if (F.isSymbol(equation[equation.length - 1])) return false;
+
+  let num1, num2, operation;
+  for (let i = 1; i < equation.length; i += 2) {
+    operation = equation[i];
+    num1 = equation[i - 1];
+    num2 = equation[i + 1];
+    if (F.isNumber(num1) && F.isOperation(operation) && F.isNumber(num2))
+      continue;
+    else return false;
+  }
   return true;
 }
 
-function findOperationIndex(curEquation: Array<string>): number {
+export function findOperationIndex(curEquation: Array<string>): number {
   let index = -1;
   for (let i = 0; i < curEquation.length; i++) {
     const strCurValue = curEquation[i];
@@ -39,7 +54,7 @@ function findOperationIndex(curEquation: Array<string>): number {
   return index;
 }
 
-function executeOperation(
+export function executeOperation(
   curEquation: Array<string>,
   operationIndex: number
 ): number {
@@ -59,8 +74,5 @@ function executeOperation(
 }
 
 export default {
-  isValidEquation,
-  findOperationIndex,
-  executeOperation,
   solve
 };
