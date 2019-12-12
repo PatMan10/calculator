@@ -2,7 +2,6 @@
 import "./css/normalise.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./css/kickstart.css";
-import "./css/animate.css";
 import "./css/mobile.css";
 import "./css/desktop.css";
 //------------LIBS-------------
