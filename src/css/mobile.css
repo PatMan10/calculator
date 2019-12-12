@@ -4,7 +4,6 @@ body {
 
 div[id="calculator"] {
   border-radius: 5px;
-  width: 345px;
 }
 
 div[id="calculator"] > div {
@@ -33,8 +32,8 @@ label[id="current-input"] {
 div[id="buttons"] {
   display: grid;
   grid-gap: 1px;
-  grid-template-columns: 80px 80px 80px 80px;
-  grid-template-rows: 80px 80px 80px 80px 80px;
+  grid-template-columns: repeat(4, 80px);
+  grid-template-rows: repeat(5, 80px);
 }
 
 input[type="button"] {
