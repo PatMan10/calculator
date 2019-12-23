@@ -1,7 +1,6 @@
 //------------CSS-------------
-import "./css/normalise.css";
+import "normalize.css/normalize.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./css/kickstart.css";
 import "./css/mobile.css";
 import "./css/desktop.css";
 //------------LIBS-------------
@@ -158,7 +157,7 @@ class App extends React.Component<{}, AppState> {
   render() {
     const { equation, input } = this.state;
     return (
-      <main className="white-bg container flex-row-jcC-aiC h-100vh">
+      <main className="white-bg container flex-row-aiC-jcC h-100vh">
         <div id="calculator" className="black-bg p-05e">
           <div id="display" className="flex-col">
             <label id="equation">{equation.join(" ")}</label>
