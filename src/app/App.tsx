@@ -12,15 +12,17 @@ import F from "./utils/Functions";
 import L from "./utils/Logger";
 import MyMath from "./utils/MyMath";
 
-interface AppState {
+interface Props {}
+
+interface State {
   equation: Array<string>;
   isSolved: boolean;
   input: string;
 }
 
-class App extends React.Component<{}, AppState> {
-  constructor() {
-    super({});
+class App extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
     this.state = {
       equation: [],
       isSolved: false,
