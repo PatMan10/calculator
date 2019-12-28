@@ -7,10 +7,9 @@ import "./css/desktop.css";
 //------------LIBS-------------
 import React from "react";
 //------------UTILS-------------
-import C from "./utils/Constants";
-import F from "./utils/Functions";
-import L from "./utils/Logger";
-import MyMath from "./utils/MyMath";
+import C from "./utils/classes/Constants";
+import F from "./utils/classes/Functions";
+import MyMath from "./utils/classes/MyMath";
 
 interface Props {}
 
@@ -56,8 +55,16 @@ class App extends React.Component<Props, State> {
     let newEq = [...equation],
       newI = input;
 
+    if (
+      value === C.charZero &&
+      equation[equation.length - 1] === C.charDivide
+    ) {
+      alert("Division by 0 not allowed.");
+      return;
+    }
+
     if (input.length === 21) {
-      alert("number limit reached");
+      alert("Number limit reached.");
       return;
     }
 

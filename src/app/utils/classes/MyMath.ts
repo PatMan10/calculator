@@ -1,6 +1,5 @@
 import C from "./Constants";
 import F from "./Functions";
-import L from "./Logger";
 
 function solve(equation: Array<string>): number {
   if (!isValidEquation(equation)) throw new Error("Malformed equation.");

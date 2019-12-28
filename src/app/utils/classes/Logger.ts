@@ -1,4 +1,4 @@
-import Config from "../Config";
+import Config from "../../Config";
 
 // 0 = no logging
 // 1 = errors
