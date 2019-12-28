@@ -6,6 +6,7 @@ body {
 
 div[id="calculator"] {
   border-radius: 5px;
+  max-width: 339px;
 }
 
 div[id="calculator"] > div {
