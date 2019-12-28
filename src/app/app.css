@@ -1,3 +1,5 @@
+/*--------------MOBILE--------------------*/
+
 body {
   background-color: lime;
 }
@@ -52,4 +54,12 @@ input[id="zero"] {
 input[id="equals"] {
   grid-column: 4 / 5;
   grid-row: 4 / 6;
+}
+
+/*--------------DESKTOP--------------------*/
+
+@media (min-width: 601px) {
+  body {
+    background-color: magenta;
+  }
 }
