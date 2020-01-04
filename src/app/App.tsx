@@ -163,7 +163,7 @@ class App extends React.Component<Props, State> {
       equation.push(C.charEquals, result);
       this.setState({ equation, isSolved, input });
     } catch (e) {
-      alert("Invalid equation.");
+      alert(e.message);
     }
   }
 

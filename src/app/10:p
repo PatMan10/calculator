@@ -53,7 +53,8 @@ class Constants {
   static readonly errMsgEquationEndsWithSymbol =
     "Equation can't end with a symbol.";
   static readonly errMsgDivisionByZero = "Division by 0 not allowed.";
-  static readonly errMsgEquationStructureInvalid = "Equation structure is invalid .";
+  static readonly errMsgEquationStructureInvalid =
+    "Equation structure is invalid .";
 }
 
 export default Constants;

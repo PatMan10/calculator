@@ -1,34 +1,46 @@
+import C from "../../../utils/classes/Constants";
 import MyMath, {
-  isValidEquation,
+  checkForErrors,
   findOperationIndex,
   executeOperation
-} from "../../../utils/MyMath";
+} from "../../../utils/classes/MyMath";
 
 describe("Testing MyMath", () => {
-  describe("isValidEquation", () => {
-    it("return true if equation has valid structure", () => {
-      expect(isValidEquation(["4"])).toBe(true);
-      expect(isValidEquation(["4", "/", "2"])).toBe(true);
-      expect(isValidEquation(["10", "-", "-10"])).toBe(true);
-      expect(isValidEquation(["1", "+", "4", "-", "1", "/", "4"])).toBe(true);
-      expect(isValidEquation(["-11", "/", "2", "+", "-9"])).toBe(true);
-      expect(isValidEquation(["0", "+", "2", "/", "1000", "x", "10"])).toBe(
-        true
+  describe("checkForErrors", () => {
+    it("if something is wrong with equation, throw error with appropriate message", () => {
+      expect(() => checkForErrors([])).toThrowError(
+        new Error(C.errMsgEquationEmpty)
       );
-    });
-
-    it("return false if equation has invalid structure", () => {
-      expect(isValidEquation([])).toBe(false);
-      expect(isValidEquation(["-"])).toBe(false);
-      expect(isValidEquation(["-", "2"])).toBe(false);
-      expect(isValidEquation(["2", "2"])).toBe(false);
-      expect(isValidEquation(["2", "x"])).toBe(false);
-      expect(isValidEquation(["2", "x", "-"])).toBe(false);
-      expect(isValidEquation(["2", "x", "-", "3"])).toBe(false);
-      expect(isValidEquation(["2", "2", "x", "-", "3"])).toBe(false);
-      expect(isValidEquation(["1", "+", "4", "-", "1", "/", "/", "4"])).toBe(
-        false
+      expect(() => checkForErrors(["-"])).toThrowError(
+        new Error(C.errMsgEquationStartWithSymbol)
       );
+      expect(() => checkForErrors(["-", "2"])).toThrowError(
+        new Error(C.errMsgEquationStartWithSymbol)
+      );
+      expect(() => checkForErrors(["2", "2"])).toThrowError(
+        new Error(C.errMsgEquationStructureInvalid)
+      );
+      expect(() => checkForErrors(["1", "/", "0"])).toThrowError(
+        new Error(C.errMsgDivisionByZero)
+      );
+      expect(() => checkForErrors(["1", "/", "-0"])).toThrowError(
+        new Error(C.errMsgDivisionByZero)
+      );
+      expect(() => checkForErrors(["2", "x"])).toThrowError(
+        new Error(C.errMsgEquationEndsWithSymbol)
+      );
+      expect(() => checkForErrors(["2", "x", "-"])).toThrowError(
+        new Error(C.errMsgEquationEndsWithSymbol)
+      );
+      expect(() => checkForErrors(["2", "x", "-", "3"])).toThrowError(
+        new Error(C.errMsgEquationStructureInvalid)
+      );
+      expect(() => checkForErrors(["2", "2", "x", "-", "3"])).toThrowError(
+        new Error(C.errMsgEquationStructureInvalid)
+      );
+      expect(() =>
+        checkForErrors(["1", "+", "4", "-", "1", "/", "/", "4"])
+      ).toThrowError(new Error(C.errMsgEquationStructureInvalid));
     });
   });
 

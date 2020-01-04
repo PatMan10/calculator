@@ -2,7 +2,11 @@ import C from "./Constants";
 import F from "./Functions";
 
 function solve(equation: Array<string>): number {
-  if (!isValidEquation(equation)) throw new Error("Malformed equation.");
+  try {
+    checkForErrors(equation);
+  } catch (error) {
+    throw error;
+  }
 
   let curEquation: Array<string> = equation;
 
@@ -21,25 +25,26 @@ function solve(equation: Array<string>): number {
   return Number(curEquation[0]);
 }
 
-export function isValidEquation(equation: Array<string>): boolean {
-  if (equation.length === 0) return false;
+export function checkForErrors(equation: Array<string>) {
+  if (equation.length === 0) throw new Error(C.errMsgEquationEmpty);
 
-  if (equation.length === 1 && F.isNumber(equation[0])) return true;
+  if (F.isSymbol(equation[0])) throw Error(C.errMsgEquationStartWithSymbol);
 
-  if (F.isSymbol(equation[0])) return false;
-
-  if (F.isSymbol(equation[equation.length - 1])) return false;
+  if (F.isSymbol(equation[equation.length - 1]))
+    throw Error(C.errMsgEquationEndsWithSymbol);
 
   let num1, num2, operation;
   for (let i = 1; i < equation.length; i += 2) {
     operation = equation[i];
     num1 = equation[i - 1];
     num2 = equation[i + 1];
-    if (F.isNumber(num1) && F.isOperation(operation) && F.isNumber(num2))
+
+    if (operation === C.charDivide && (num2 === "0" || num2 === "-0"))
+      throw Error(C.errMsgDivisionByZero);
+    else if (F.isNumber(num1) && F.isOperation(operation) && F.isNumber(num2))
       continue;
-    else return false;
+    else throw Error(C.errMsgEquationStructureInvalid);
   }
-  return true;
 }
 
 export function findOperationIndex(curEquation: Array<string>): number {
