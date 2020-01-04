@@ -170,7 +170,7 @@ class App extends React.Component<Props, State> {
   render() {
     const { equation, input } = this.state;
     return (
-      <main className="white-bg container flex-row-aiC-jcC h-100vh">
+      <main className="white-bg container flex-row-aiC-jcC">
         <div id="calculator" className="black-bg p-05e">
           <div id="display" className="flex-col">
             <label id="equation">{equation.join(" ")}</label>

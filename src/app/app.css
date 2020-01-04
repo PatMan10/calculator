@@ -4,14 +4,18 @@ body {
   background-color: lime;
 }
 
+main {
+  min-height: 100vh;
+}
+
 div[id="calculator"] {
   border-radius: 5px;
   max-width: 339px;
 }
 
-div[id="calculator"] > div {
-  /*border: 1px solid cyan;*/
-}
+/*div[id="calculator"] > div {
+  border: 1px solid cyan;
+}*/
 
 div[id="display"] > label {
   /*border: 1px solid red;*/
