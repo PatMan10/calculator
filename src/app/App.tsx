@@ -24,7 +24,7 @@ class App extends React.Component<Props, State> {
     this.state = {
       equation: [],
       isSolved: false,
-      input: C.charZero
+      input: C.zero
     };
   }
 
@@ -32,7 +32,7 @@ class App extends React.Component<Props, State> {
     this.setState({
       equation: [],
       isSolved: false,
-      input: C.charZero
+      input: C.zero
     });
   }
 
@@ -54,13 +54,13 @@ class App extends React.Component<Props, State> {
     let newEq = [...equation],
       newI = input;
 
-    if (value === C.charZero)
+    if (value === C.zero)
       if (
         // trying to divide by +0
-        equation[equation.length - 1] === C.charDivide ||
+        equation[equation.length - 1] === C.divide ||
         // trying to divide by -0
-        (equation[equation.length - 2] === C.charDivide &&
-          equation[equation.length - 1] === C.charMinus)
+        (equation[equation.length - 2] === C.divide &&
+          equation[equation.length - 1] === C.minus)
       ) {
         alert("Division by 0 not allowed.");
         return;
@@ -71,12 +71,12 @@ class App extends React.Component<Props, State> {
       return;
     }
 
-    if (input === C.charZero || F.isOperation(input)) newI = value;
+    if (input === C.zero || F.isOperation(input)) newI = value;
     else newI += value;
 
     if (newEq.length === 0) newEq.push(newI);
     else if (newEq.length === 1) {
-      if (newEq[0] === C.charMinus) {
+      if (newEq[0] === C.minus) {
         newEq[newEq.length - 1] += value;
         newI = newEq[newEq.length - 1];
       } else {
@@ -87,7 +87,7 @@ class App extends React.Component<Props, State> {
       const str0 = newEq[newEq.length - 2],
         str1 = newEq[newEq.length - 1];
 
-      if (F.isOperation(str0) && str1 === C.charMinus) {
+      if (F.isOperation(str0) && str1 === C.minus) {
         newEq[newEq.length - 1] += value;
         newI = newEq[newEq.length - 1];
       } else if (F.isOperation(str1)) newEq.push(newI);
@@ -104,8 +104,8 @@ class App extends React.Component<Props, State> {
       newI = input;
 
     switch (value) {
-      case C.charMinus:
-        if (equation.length === 1) if (equation[0] === C.charMinus) return;
+      case C.minus:
+        if (equation.length === 1) if (equation[0] === C.minus) return;
 
         const str0 = equation[equation.length - 2],
           str1 = equation[equation.length - 1];
@@ -135,13 +135,13 @@ class App extends React.Component<Props, State> {
   onclickRadix() {
     const { equation, input, isSolved } = this.state;
 
-    if (isSolved || F.isOperation(input) || input.includes(C.charRadix)) return;
+    if (isSolved || F.isOperation(input) || input.includes(C.radix)) return;
 
     let newEq = [...equation],
       newI = input;
 
-    newEq[newEq.length - 1] += C.charRadix;
-    newI += C.charRadix;
+    newEq[newEq.length - 1] += C.radix;
+    newI += C.radix;
 
     this.setState({
       equation: newEq,
@@ -160,7 +160,7 @@ class App extends React.Component<Props, State> {
     try {
       const result = MyMath.solve(equation).toString();
       input = result;
-      equation.push(C.charEquals, result);
+      equation.push(C.equals, result);
       this.setState({ equation, isSolved, input });
     } catch (e) {
       alert(e.message);
@@ -188,91 +188,91 @@ class App extends React.Component<Props, State> {
               <input
                 id="divide"
                 className="btn btn-secondary"
-                onClick={() => this.onclickOperation(C.charDivide)}
+                onClick={() => this.onclickOperation(C.divide)}
                 type="button"
                 value="/"
               />
               <input
                 id="multiply"
                 className="btn btn-secondary"
-                onClick={() => this.onclickOperation(C.charMultiply)}
+                onClick={() => this.onclickOperation(C.multiply)}
                 type="button"
                 value="x"
               />
               <input
                 id="seven"
                 className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.charSeven)}
+                onClick={() => this.onclickNumber(C.seven)}
                 type="button"
                 value="7"
               />
               <input
                 id="eight"
                 className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.charEight)}
+                onClick={() => this.onclickNumber(C.eight)}
                 type="button"
                 value="8"
               />
               <input
                 id="nine"
                 className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.charNine)}
+                onClick={() => this.onclickNumber(C.nine)}
                 type="button"
                 value="9"
               />
               <input
                 id="minus"
                 className="btn btn-secondary"
-                onClick={() => this.onclickOperation(C.charMinus)}
+                onClick={() => this.onclickOperation(C.minus)}
                 type="button"
                 value="-"
               />
               <input
                 id="four"
                 className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.charFour)}
+                onClick={() => this.onclickNumber(C.four)}
                 type="button"
                 value="4"
               />
               <input
                 id="five"
                 className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.charFive)}
+                onClick={() => this.onclickNumber(C.five)}
                 type="button"
                 value="5"
               />
               <input
                 id="six"
                 className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.charSix)}
+                onClick={() => this.onclickNumber(C.six)}
                 type="button"
                 value="6"
               />
               <input
                 id="plus"
                 className="btn btn-secondary"
-                onClick={() => this.onclickOperation(C.charPlus)}
+                onClick={() => this.onclickOperation(C.plus)}
                 type="button"
                 value="+"
               />
               <input
                 id="one"
                 className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.charOne)}
+                onClick={() => this.onclickNumber(C.one)}
                 type="button"
                 value="1"
               />
               <input
                 id="two"
                 className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.charTwo)}
+                onClick={() => this.onclickNumber(C.two)}
                 type="button"
                 value="2"
               />
               <input
                 id="three"
                 className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.charThree)}
+                onClick={() => this.onclickNumber(C.three)}
                 type="button"
                 value="3"
               />
@@ -286,7 +286,7 @@ class App extends React.Component<Props, State> {
               <input
                 id="zero"
                 className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.charZero)}
+                onClick={() => this.onclickNumber(C.zero)}
                 type="button"
                 value="0"
               />

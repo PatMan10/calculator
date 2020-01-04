@@ -2,11 +2,11 @@ import C from "./Constants";
 
 class Functions {
   static isDivideOrMultiply(c: string): boolean {
-    return c === C.charDivide || c === C.charMultiply;
+    return c === C.divide || c === C.multiply;
   }
 
   static isMinusOrPlus(c: string): boolean {
-    return c === C.charMinus || c === C.charPlus;
+    return c === C.minus || c === C.plus;
   }
 
   static isOperation(c: string): boolean {
@@ -14,11 +14,11 @@ class Functions {
   }
 
   static isSymbol(c: string): boolean {
-    return c === C.charRadix || this.isOperation(c);
+    return c === C.radix || this.isOperation(c);
   }
 
   static isNumber(c: string): boolean {
-    return C.regexNumbers.test(c);
+    return C.numbers.test(c);
   }
 }
 

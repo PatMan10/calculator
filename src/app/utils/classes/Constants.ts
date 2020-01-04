@@ -1,51 +1,51 @@
 class Constants {
-  static readonly regexSymbols = /\+|-|x|\/|\./;
-  static readonly regexNumbers = /^-?\d+(\.\d+)?$/;
-  static readonly regexOperations = /\+|-|x|\//;
-  static readonly regexDM = /\/|x/;
-  static readonly regexMP = /-|\+/;
+  static readonly symbols = /\+|-|x|\/|\./;
+  static readonly numbers = /^-?\d+(\.\d+)?$/;
+  static readonly operations = /\+|-|x|\//;
+  static readonly DM = /\/|x/;
+  static readonly MP = /-|\+/;
 
-  static readonly charDivide = "/";
-  static readonly charEquals = "=";
-  static readonly charMultiply = "x";
-  static readonly charMinus = "-";
-  static readonly charPlus = "+";
-  static readonly charRadix = ".";
+  static readonly divide = "/";
+  static readonly equals = "=";
+  static readonly multiply = "x";
+  static readonly minus = "-";
+  static readonly plus = "+";
+  static readonly radix = ".";
 
-  static readonly charZero = "0";
-  static readonly charOne = "1";
-  static readonly charTwo = "2";
-  static readonly charThree = "3";
-  static readonly charFour = "4";
-  static readonly charFive = "5";
-  static readonly charSix = "6";
-  static readonly charSeven = "7";
-  static readonly charEight = "8";
-  static readonly charNine = "9";
+  static readonly zero = "0";
+  static readonly one = "1";
+  static readonly two = "2";
+  static readonly three = "3";
+  static readonly four = "4";
+  static readonly five = "5";
+  static readonly six = "6";
+  static readonly seven = "7";
+  static readonly eight = "8";
+  static readonly nine = "9";
 
-  static readonly str_ = "";
-  static readonly strLblEquationId = "equation";
-  static readonly strLblCurrentInputId = "current-input";
+  static readonly _ = "";
+  static readonly lblEquationId = "equation";
+  static readonly lblCurrentInputId = "current-input";
 
-  static readonly strBtnClearId = "clear";
+  static readonly btnClearId = "clear";
 
-  static readonly strBtnEqualsId = "equals";
-  static readonly strBtnMultiplyId = "multiply";
-  static readonly strBtnDivideId = "divide";
-  static readonly strBtnPlusId = "plus";
-  static readonly strBtnMinusId = "minus";
+  static readonly btnEqualsId = "equals";
+  static readonly btnMultiplyId = "multiply";
+  static readonly btnDivideId = "divide";
+  static readonly btnPlusId = "plus";
+  static readonly btnMinusId = "minus";
 
-  static readonly strBtnRadixId = "radix";
-  static readonly strBtnZeroId = "zero";
-  static readonly strBtnOneId = "one";
-  static readonly strBtnTwoId = "two";
-  static readonly strBtnThreeId = "three";
-  static readonly strBtnFourId = "four";
-  static readonly strBtnFiveId = "five";
-  static readonly strBtnSixId = "six";
-  static readonly strBtnSevenId = "seven";
-  static readonly strBtnEightId = "eight";
-  static readonly strBtnNineId = "nine";
+  static readonly btnRadixId = "radix";
+  static readonly btnZeroId = "zero";
+  static readonly btnOneId = "one";
+  static readonly btnTwoId = "two";
+  static readonly btnThreeId = "three";
+  static readonly btnFourId = "four";
+  static readonly btnFiveId = "five";
+  static readonly btnSixId = "six";
+  static readonly btnSevenId = "seven";
+  static readonly btnEightId = "eight";
+  static readonly btnNineId = "nine";
 
   static readonly errMsgEquationEmpty = "Equation is empty.";
   static readonly errMsgEquationStartWithSymbol =
@@ -53,7 +53,8 @@ class Constants {
   static readonly errMsgEquationEndsWithSymbol =
     "Equation can't end with a symbol.";
   static readonly errMsgDivisionByZero = "Division by 0 not allowed.";
-  static readonly errMsgEquationStructureInvalid = "Equation structure is invalid .";
+  static readonly errMsgEquationStructureInvalid =
+    "Equation structure is invalid .";
 }
 
 export default Constants;

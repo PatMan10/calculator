@@ -1,4 +1,4 @@
-import F from "../../../utils/Functions";
+import F from "../../../utils/classes/Functions";
 
 describe("Functions", () => {
   it("F.isDivideOrMultiply", () => {

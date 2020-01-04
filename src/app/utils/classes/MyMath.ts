@@ -39,7 +39,7 @@ export function checkForErrors(equation: Array<string>) {
     num1 = equation[i - 1];
     num2 = equation[i + 1];
 
-    if (operation === C.charDivide && (num2 === "0" || num2 === "-0"))
+    if (operation === C.divide && (num2 === "0" || num2 === "-0"))
       throw Error(C.errMsgDivisionByZero);
     else if (F.isNumber(num1) && F.isOperation(operation) && F.isNumber(num2))
       continue;
@@ -66,13 +66,13 @@ export function executeOperation(
     num2 = Number(curEquation[operationIndex + 1]);
   const operation = curEquation[operationIndex];
 
-  if (operation === C.charDivide) return num1 / num2;
+  if (operation === C.divide) return num1 / num2;
 
-  if (operation === C.charMultiply) return num1 * num2;
+  if (operation === C.multiply) return num1 * num2;
 
-  if (operation === C.charMinus) return num1 - num2;
+  if (operation === C.minus) return num1 - num2;
 
-  if (operation === C.charPlus) return num1 + num2;
+  if (operation === C.plus) return num1 + num2;
 
   return -1;
 }
