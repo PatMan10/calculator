@@ -54,13 +54,17 @@ class App extends React.Component<Props, State> {
     let newEq = [...equation],
       newI = input;
 
-    if (
-      value === C.charZero &&
-      equation[equation.length - 1] === C.charDivide
-    ) {
-      alert("Division by 0 not allowed.");
-      return;
-    }
+    if (value === C.charZero)
+      if (
+        // trying to divide by +0
+        equation[equation.length - 1] === C.charDivide ||
+        // trying to divide by -0
+        (equation[equation.length - 2] === C.charDivide &&
+          equation[equation.length - 1] === C.charMinus)
+      ) {
+        alert("Division by 0 not allowed.");
+        return;
+      }
 
     if (input.length === 21) {
       alert("Number limit reached.");
