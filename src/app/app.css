@@ -10,15 +10,10 @@ main {
 
 div[id="calculator"] {
   border-radius: 5px;
-  max-width: 339px;
+  width: 300px;
 }
 
-/*div[id="calculator"] > div {
-  border: 1px solid cyan;
-}*/
-
 div[id="display"] > label {
-  /*border: 1px solid red;*/
   margin: 0;
   min-height: 40px;
   text-align: right;
@@ -27,24 +22,23 @@ div[id="display"] > label {
 label[id="equation"] {
   color: gold;
   font-size: 1.2em;
-  width: 100%;
   word-wrap: break-word;
 }
 
 label[id="current-input"] {
   color: white;
-  font-size: 1.6em;
+  font-size: 1.5em;
 }
 
 div[id="buttons"] {
   display: grid;
-  grid-gap: 1px;
-  grid-template-columns: repeat(4, 80px);
-  grid-template-rows: repeat(5, 80px);
+  grid-gap: 2px;
+  grid-template-columns: repeat(4, 70px);
+  grid-template-rows: repeat(5, 70px);
 }
 
 input[type="button"] {
-  font-size: 1.5em;
+  font-size: 1.7em;
 }
 
 input[type="button"]:hover {
@@ -59,6 +53,62 @@ input[id="zero"] {
 input[id="equals"] {
   grid-column: 4 / 5;
   grid-row: 4 / 6;
+}
+
+@media (min-width: 360px) {
+  div[id="calculator"] {
+    border-radius: 8px;
+    width: 340px;
+  }
+
+  div[id="display"] > label {
+    min-height: 50px;
+  }
+
+  label[id="equation"] {
+    font-size: 1.4em;
+  }
+
+  label[id="current-input"] {
+    font-size: 1.7em;
+  }
+
+  div[id="buttons"] {
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: repeat(5, 80px);
+  }
+
+  input[type="button"] {
+    font-size: 2em;
+  }
+}
+
+@media (min-width: 400px) {
+  div[id="calculator"] {
+    border-radius: 11px;
+    width: 390px;
+  }
+
+  div[id="display"] > label {
+    min-height: 60px;
+  }
+
+  label[id="equation"] {
+    font-size: 1.6em;
+  }
+
+  label[id="current-input"] {
+    font-size: 1.9em;
+  }
+
+  div[id="buttons"] {
+    grid-template-columns: repeat(4, 92px);
+    grid-template-rows: repeat(5, 92px);
+  }
+
+  input[type="button"] {
+    font-size: 2.3em;
+  }
 }
 
 /*--------------DESKTOP--------------------*/

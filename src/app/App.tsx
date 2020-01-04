@@ -1,5 +1,5 @@
 //------------CSS-------------
-import "normalize.css/normalize.css";
+import "bootstrap/dist/css/bootstrap-reboot.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "pmt-kickstart.css/src/kickstart.min.css";
 import "./app.css";
@@ -66,10 +66,15 @@ class App extends React.Component<Props, State> {
         return;
       }
 
-    if (input.length === 21) {
-      alert("Number limit reached.");
-      return;
-    }
+    if (
+      window.innerWidth <= 320 ||
+      window.innerWidth <= 360 ||
+      window.innerWidth <= 420
+    )
+      if (input.length === 21) {
+        alert("Number limit reached.");
+        return;
+      }
 
     if (input === C.zero || F.isOperation(input)) newI = value;
     else newI += value;
@@ -170,134 +175,133 @@ class App extends React.Component<Props, State> {
   render() {
     const { equation, input } = this.state;
     return (
-      <main className="white-bg container flex-row-aiC-jcC">
-        <div id="calculator" className="black-bg p-05e">
-          <div id="display" className="flex-col">
+      <main className="white-bg flex-row-aiC-jcC">
+        <div id="calculator" className="black-bg flex-col-aiC p-05e">
+          <div id="display" className="flex-col w-100p">
             <label id="equation">{equation.join(" ")}</label>
             <label id="current-input">{input}</label>
           </div>
-          <div className="flex-row-jcC">
-            <div id="buttons">
-              <input
-                id="clear"
-                className="btn btn-danger"
-                onClick={() => this.onclickClear()}
-                type="button"
-                value="AC"
-              />
-              <input
-                id="divide"
-                className="btn btn-secondary"
-                onClick={() => this.onclickOperation(C.divide)}
-                type="button"
-                value="/"
-              />
-              <input
-                id="multiply"
-                className="btn btn-secondary"
-                onClick={() => this.onclickOperation(C.multiply)}
-                type="button"
-                value="x"
-              />
-              <input
-                id="seven"
-                className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.seven)}
-                type="button"
-                value="7"
-              />
-              <input
-                id="eight"
-                className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.eight)}
-                type="button"
-                value="8"
-              />
-              <input
-                id="nine"
-                className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.nine)}
-                type="button"
-                value="9"
-              />
-              <input
-                id="minus"
-                className="btn btn-secondary"
-                onClick={() => this.onclickOperation(C.minus)}
-                type="button"
-                value="-"
-              />
-              <input
-                id="four"
-                className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.four)}
-                type="button"
-                value="4"
-              />
-              <input
-                id="five"
-                className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.five)}
-                type="button"
-                value="5"
-              />
-              <input
-                id="six"
-                className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.six)}
-                type="button"
-                value="6"
-              />
-              <input
-                id="plus"
-                className="btn btn-secondary"
-                onClick={() => this.onclickOperation(C.plus)}
-                type="button"
-                value="+"
-              />
-              <input
-                id="one"
-                className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.one)}
-                type="button"
-                value="1"
-              />
-              <input
-                id="two"
-                className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.two)}
-                type="button"
-                value="2"
-              />
-              <input
-                id="three"
-                className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.three)}
-                type="button"
-                value="3"
-              />
-              <input
-                id="equals"
-                className="btn btn-primary"
-                onClick={() => this.onclickEquals()}
-                type="button"
-                value="="
-              />
-              <input
-                id="zero"
-                className="btn btn-dark"
-                onClick={() => this.onclickNumber(C.zero)}
-                type="button"
-                value="0"
-              />
-              <input
-                id="radix"
-                className="btn btn-dark"
-                onClick={() => this.onclickRadix()}
-                type="button"
-                value="."
-              />
-            </div>
+
+          <div id="buttons">
+            <input
+              id="clear"
+              className="btn btn-danger"
+              onClick={() => this.onclickClear()}
+              type="button"
+              value="AC"
+            />
+            <input
+              id="divide"
+              className="btn btn-secondary"
+              onClick={() => this.onclickOperation(C.divide)}
+              type="button"
+              value="/"
+            />
+            <input
+              id="multiply"
+              className="btn btn-secondary"
+              onClick={() => this.onclickOperation(C.multiply)}
+              type="button"
+              value="x"
+            />
+            <input
+              id="seven"
+              className="btn btn-dark"
+              onClick={() => this.onclickNumber(C.seven)}
+              type="button"
+              value="7"
+            />
+            <input
+              id="eight"
+              className="btn btn-dark"
+              onClick={() => this.onclickNumber(C.eight)}
+              type="button"
+              value="8"
+            />
+            <input
+              id="nine"
+              className="btn btn-dark"
+              onClick={() => this.onclickNumber(C.nine)}
+              type="button"
+              value="9"
+            />
+            <input
+              id="minus"
+              className="btn btn-secondary"
+              onClick={() => this.onclickOperation(C.minus)}
+              type="button"
+              value="-"
+            />
+            <input
+              id="four"
+              className="btn btn-dark"
+              onClick={() => this.onclickNumber(C.four)}
+              type="button"
+              value="4"
+            />
+            <input
+              id="five"
+              className="btn btn-dark"
+              onClick={() => this.onclickNumber(C.five)}
+              type="button"
+              value="5"
+            />
+            <input
+              id="six"
+              className="btn btn-dark"
+              onClick={() => this.onclickNumber(C.six)}
+              type="button"
+              value="6"
+            />
+            <input
+              id="plus"
+              className="btn btn-secondary"
+              onClick={() => this.onclickOperation(C.plus)}
+              type="button"
+              value="+"
+            />
+            <input
+              id="one"
+              className="btn btn-dark"
+              onClick={() => this.onclickNumber(C.one)}
+              type="button"
+              value="1"
+            />
+            <input
+              id="two"
+              className="btn btn-dark"
+              onClick={() => this.onclickNumber(C.two)}
+              type="button"
+              value="2"
+            />
+            <input
+              id="three"
+              className="btn btn-dark"
+              onClick={() => this.onclickNumber(C.three)}
+              type="button"
+              value="3"
+            />
+            <input
+              id="equals"
+              className="btn btn-primary"
+              onClick={() => this.onclickEquals()}
+              type="button"
+              value="="
+            />
+            <input
+              id="zero"
+              className="btn btn-dark"
+              onClick={() => this.onclickNumber(C.zero)}
+              type="button"
+              value="0"
+            />
+            <input
+              id="radix"
+              className="btn btn-dark"
+              onClick={() => this.onclickRadix()}
+              type="button"
+              value="."
+            />
           </div>
         </div>
       </main>
