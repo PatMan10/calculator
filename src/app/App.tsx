@@ -66,15 +66,10 @@ class App extends React.Component<Props, State> {
         return;
       }
 
-    if (
-      window.innerWidth <= 320 ||
-      window.innerWidth <= 360 ||
-      window.innerWidth <= 420
-    )
-      if (input.length === 21) {
-        alert("Number limit reached.");
-        return;
-      }
+    if (input.length === 21) {
+      alert("Number limit reached.");
+      return;
+    }
 
     if (input === C.zero || F.isOperation(input)) newI = value;
     else newI += value;
