@@ -1,7 +1,7 @@
 //------------CSS-------------
 import "bootstrap/dist/css/bootstrap-reboot.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "pmt-kickstart.css/src/kickstart.min.css";
+import "@patman10/kickstart.css/dist/kickstart.min.css";
 import "./app.css";
 //------------LIBS-------------
 import React from "react";
