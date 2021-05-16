@@ -8,7 +8,7 @@ import React from "react";
 //------------UTILS-------------
 import C from "./utils/classes/Constants";
 import F from "./utils/classes/Functions";
-import MyMath from "./utils/classes/MyMath";
+import { solve } from "./utils/classes/MyMath";
 
 interface Props {}
 
@@ -24,7 +24,7 @@ class App extends React.Component<Props, State> {
     this.state = {
       equation: [],
       isSolved: false,
-      input: C.zero
+      input: C.zero,
     };
   }
 
@@ -32,7 +32,7 @@ class App extends React.Component<Props, State> {
     this.setState({
       equation: [],
       isSolved: false,
-      input: C.zero
+      input: C.zero,
     });
   }
 
@@ -43,7 +43,7 @@ class App extends React.Component<Props, State> {
 
     this.setState({ isSolved: false });
     return {
-      equation: [strI]
+      equation: [strI],
     };
   }
 
@@ -54,7 +54,7 @@ class App extends React.Component<Props, State> {
     let newEq = [...equation],
       newI = input;
 
-    if (value === C.zero)
+    if (value === C.zero) {
       if (
         // trying to divide by +0
         equation[equation.length - 1] === C.divide ||
@@ -65,6 +65,7 @@ class App extends React.Component<Props, State> {
         alert("Division by 0 not allowed.");
         return;
       }
+    }
 
     if (input.length === 21) {
       alert("Number limit reached.");
@@ -118,8 +119,9 @@ class App extends React.Component<Props, State> {
           equation.length === 0 ||
           F.isOperation(input) ||
           F.isOperation(equation[equation.length - 1])
-        )
+        ) {
           return;
+        }
         break;
     }
 
@@ -128,7 +130,7 @@ class App extends React.Component<Props, State> {
 
     this.setState({
       equation: newEq,
-      input: newI
+      input: newI,
     });
   }
 
@@ -145,7 +147,7 @@ class App extends React.Component<Props, State> {
 
     this.setState({
       equation: newEq,
-      input: newI
+      input: newI,
     });
   }
 
@@ -158,7 +160,7 @@ class App extends React.Component<Props, State> {
       input = curI;
 
     try {
-      const result = MyMath.solve(equation).toString();
+      const result = solve(equation).toString();
       input = result;
       equation.push(C.equals, result);
       this.setState({ equation, isSolved, input });

@@ -1,7 +1,7 @@
 import C from "./Constants";
 import F from "./Functions";
 
-function solve(equation: Array<string>): number {
+export function solve(equation: Array<string>): number {
   try {
     checkForErrors(equation);
   } catch (error) {
@@ -30,8 +30,9 @@ export function checkForErrors(equation: Array<string>) {
 
   if (F.isSymbol(equation[0])) throw Error(C.errMsgEquationStartWithSymbol);
 
-  if (F.isSymbol(equation[equation.length - 1]))
+  if (F.isSymbol(equation[equation.length - 1])) {
     throw Error(C.errMsgEquationEndsWithSymbol);
+  }
 
   let num1, num2, operation;
   for (let i = 1; i < equation.length; i += 2) {
@@ -39,18 +40,20 @@ export function checkForErrors(equation: Array<string>) {
     num1 = equation[i - 1];
     num2 = equation[i + 1];
 
-    if (operation === C.divide && (num2 === "0" || num2 === "-0"))
+    if (operation === C.divide && (num2 === "0" || num2 === "-0")) {
       throw Error(C.errMsgDivisionByZero);
-    else if (F.isNumber(num1) && F.isOperation(operation) && F.isNumber(num2))
+    } else if (
+      F.isNumber(num1) && F.isOperation(operation) && F.isNumber(num2)
+    ) {
       continue;
-    else throw Error(C.errMsgEquationStructureInvalid);
+    } else throw Error(C.errMsgEquationStructureInvalid);
   }
 }
 
-export function findOperationIndex(curEquation: Array<string>): number {
+export function findOperationIndex(equation: Array<string>): number {
   let index = -1;
-  for (let i = 0; i < curEquation.length; i++) {
-    const strCurValue = curEquation[i];
+  for (let i = 0; i < equation.length; i++) {
+    const strCurValue = equation[i];
     if (F.isDivideOrMultiply(strCurValue)) return i;
 
     if (index === -1) if (F.isMinusOrPlus(strCurValue)) index = i;
@@ -59,12 +62,12 @@ export function findOperationIndex(curEquation: Array<string>): number {
 }
 
 export function executeOperation(
-  curEquation: Array<string>,
-  operationIndex: number
+  equation: Array<string>,
+  operationIndex: number,
 ): number {
-  const num1 = Number(curEquation[operationIndex - 1]),
-    num2 = Number(curEquation[operationIndex + 1]);
-  const operation = curEquation[operationIndex];
+  const num1 = Number(equation[operationIndex - 1]),
+    num2 = Number(equation[operationIndex + 1]);
+  const operation = equation[operationIndex];
 
   if (operation === C.divide) return num1 / num2;
 
@@ -76,7 +79,3 @@ export function executeOperation(
 
   return -1;
 }
-
-export default {
-  solve
-};
